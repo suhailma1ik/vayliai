@@ -1,0 +1,10 @@
+---
+const { wordmark = true } = Astro.props;
+---
+<span class="brand" aria-label="Zusal">
+  <svg viewBox="0 0 48 40" aria-hidden="true" class="brand-symbol">
+    <path fill="currentColor" d="M2 3h14c4 0 7 2 10 5l10 10c-3 3-7 3-10 0L16 10H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm0 30 11-11c3-3 7-3 10 0l10 10h13a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H32c-4 0-7-2-10-5l-6-6-7 7H2c-1 0-1-1 0-2Z"/>
+    <path fill="var(--accent)" d="m29 10 7-7h10a1 1 0 0 1 1 1v5l-9 9c-3 1-6-2-9-8Z"/>
+  </svg>
+  {wordmark && <span>Zusal</span>}
+</span>

@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import App from '../../components/App';
+export function getStaticPaths(){return ['history','billing','settings','approve','demo'].map(view=>({params:{view}}));}
+const {view}=Astro.params;
+---
+<BaseLayout title="Workspace" app><App initialView={view} client:only="react" /></BaseLayout>

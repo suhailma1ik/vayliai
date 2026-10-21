@@ -1,0 +1,57 @@
+---
+import Logo from '../components/Logo.astro';
+import '../styles/global.css';
+import '@fontsource-variable/manrope';
+import '@fontsource/ibm-plex-mono/400.css';
+interface Props { title: string; description?: string; page?: string; app?: boolean }
+const { title, description = 'A considered route for every agent request. Model routing for individual developers, with your own provider accounts.', page = '', app = false } = Astro.props;
+const discord = import.meta.env.PUBLIC_DISCORD_URL;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f5ef" />
+    <meta property="og:title" content={`${title} — Zusal`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title} — Zusal</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (() => { try { const p=localStorage.getItem('zusal-theme'); document.documentElement.dataset.theme=p|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch { document.documentElement.dataset.theme='light'; } })();
+    </script>
+  </head>
+  <body class:list={[app && 'app-page']}>
+    <a href="#main" class="skip-link">Skip to content</a>
+    {!app && <header class="site-header">
+      <a href="/" class="logo-link" aria-label="Zusal home"><Logo /></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/download" aria-current={page==='download'?'page':undefined}>Download</a>
+        <a href="/pricing" aria-current={page==='pricing'?'page':undefined}>Pricing</a>
+        <a href="/docs" aria-current={page==='docs'?'page':undefined}>Docs</a>
+      </nav>
+      <div class="header-actions"><button class="theme-toggle" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span></button><a class="sign-in-link" href="/sign-in">Sign in <span aria-hidden="true">↗</span></a><a class="button primary compact header-install" href="/download">Get Zusal <span aria-hidden="true">↗</span></a></div>
+    </header>}
+    <main id="main"><slot /></main>
+    {!app && <footer class="site-footer">
+      <div class="footer-top"><a href="/" class="logo-link"><Logo /></a><p>More intention.<br />Every inference.</p><a class="footer-back" href="#main">Back to top ↑</a></div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} Zusal</span><nav aria-label="Footer"><a href="/privacy">Privacy</a><a href="/terms">Terms</a>{discord?<a href={discord} target="_blank" rel="noopener noreferrer">Discord ↗</a>:<a href="/docs#support">Community</a>}</nav><span class="footer-note">Built for the way you build.</span></div>
+    </footer>}
+    <script>
+      import {countEvent} from '../lib/analytics';
+      countEvent('visit');
+      document.querySelectorAll<HTMLAnchorElement>('a[href="/download"]').forEach(link=>link.addEventListener('click',()=>countEvent('install_click')));
+      function bindTheme(){
+        document.querySelectorAll<HTMLButtonElement>('.theme-toggle').forEach(button => button.addEventListener('click',()=>{
+          const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';
+          document.documentElement.dataset.theme=theme;
+          try{localStorage.setItem('zusal-theme',theme)}catch{}
+        }));
+      }
+      bindTheme();
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{try{if(!localStorage.getItem('zusal-theme'))document.documentElement.dataset.theme=e.matches?'dark':'light'}catch{}});
+    </script>
+  </body>
+</html>

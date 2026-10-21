@@ -1,0 +1,23 @@
+project_id = "zusal-web"
+# Authenticated functions validate the user with Auth.getUser themselves.
+# Pairing/device/webhook endpoints use distinct credentials, not user JWTs.
+[functions.pair-start]
+verify_jwt = false
+[functions.pair-poll]
+verify_jwt = false
+[functions.pair-approve]
+verify_jwt = false
+[functions.entitlement]
+verify_jwt = false
+[functions.ingest-usage]
+verify_jwt = false
+[functions.billing]
+verify_jwt = false
+[functions.paddle-webhook]
+verify_jwt = false
+[functions.delete-account]
+verify_jwt = false
+[functions.trial-reminders]
+verify_jwt = false
+[functions.site-event]
+verify_jwt = false

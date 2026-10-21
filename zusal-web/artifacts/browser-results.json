@@ -1,0 +1,70 @@
+{
+  "results": [
+    {
+      "path": "/",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/download",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/pricing",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/docs",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/sign-in",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/app/demo",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/app/history?demo=1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/app/billing?demo=1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "/app/settings?demo=1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "dark:/",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "dark:/pricing",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "dark:/app/demo",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "path": "dark:/app/settings?demo=1",
+      "overflow": false,
+      "violations": []
+    }
+  ],
+  "errors": []
+}

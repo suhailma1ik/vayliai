@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import App from '../components/App';
+export function getStaticPaths(){return ['sign-in','sign-up','reset-password','update-password'].map(auth=>({params:{auth}}));}
+const {auth}=Astro.params;
+---
+<BaseLayout title={auth==='sign-up'?'Create account':auth==='sign-in'?'Sign in':'Account recovery'}><App initialView={auth} client:only="react" /></BaseLayout>

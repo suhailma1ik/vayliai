@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InstallTabs from '../components/InstallTabs';
+import '../styles/public.css';
+---
+<BaseLayout title="Download" page="download"><div class="page-wrap"><header class="page-intro"><span class="eyebrow">GET ZUSAL / DEVELOPER PREVIEW</span><h1>A new route.<br />Same workspace.</h1><p>Add routing to your existing harness. Keep your tools, provider accounts, and workflow.</p></header><InstallTabs client:load /><section class="prose"><h2>Install now. Activate when you’re ready.</h2><p>The intended account flow uses <code>zusal login</code> to approve a CLI device in your browser, with a device-code fallback for remote machines. Your free period starts on the first successful routed model request—not when you download or connect a device. The current Pi prototype does not yet include this production account integration.</p><p>First 1,000 qualifying activations receive 30 days of Pro. Later activations receive 14 days. No card is required to start.</p></section></div></BaseLayout>

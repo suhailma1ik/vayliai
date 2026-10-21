@@ -1,0 +1,40 @@
+{
+  "name": "zusal-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node run-astro.mjs dev --host 127.0.0.1",
+    "build": "node run-astro.mjs build && node scripts/security-headers.mjs",
+    "preview": "node run-astro.mjs preview --host 127.0.0.1",
+    "check": "node run-astro.mjs check",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check:edge": "tsc -p tsconfig.edge.json",
+    "test:browser": "node scripts/browser-check.mjs",
+    "format": "prettier --write src/**/*.{ts,tsx,css} tests/*.ts netlify/functions/*.ts supabase/functions/**/*.ts"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.1.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@supabase/supabase-js": "2.118.0",
+    "astro": "7.4.0",
+    "lucide-react": "1.59.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.14.0",
+    "@electric-sql/pglite": "0.5.10",
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}
